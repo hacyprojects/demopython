@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+{% endblock %}
+    {% if category %}
+        {{category.description|truncatewords:155}}
+    {% else %}
+        Welcome to Hazotique Collections where you can buys different items....
+    {% endif %}
+{% block title %}
+{% endblock %}
+    {% if category %}
+        {{category.name}}-Hazotique Collections
+    {% else %}
+        See our New Collections-Hazotique Collections
+    {% endif %}
+{% block content %}
+{% endblock %}
+{% if category %}
+<div>
+    <div>
+        <p><a href="{% url 'shop:allProdCat' %}">Our Product Collections"</a></p>
+        </div>
+    </div>
+    {% endif %}
+<div>
+    {% if category %}
+        <img src="{{category.image.url}}" alt="{{category.name}}">
+</div>
+    <br>
+<div>
+        <h1>{{category.name}}</h1>
+        <p>{{category.description}}</p>
+</div>
+    {% else %}
+<div>
+    <img src="{% static 'image/banner.png' %}" alt="our products">
+</div>
+<br>
+<div>
+    <h1> Our products Collections</h1>
+    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+</div>
+    {% endif %}
+<div>
+    <div>
+    {% for product in products %}
+        {% endfor %}
+    <div>
+                 <a href=""><img src="{{product.image.url}}" alt="{{product.name}}"></a>
+        <div>
+                <h4>{{product.name}}</h4>
+                <p>{{product.price}}</p>
+            </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
